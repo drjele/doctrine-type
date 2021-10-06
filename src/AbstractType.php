@@ -14,6 +14,11 @@ use ReflectionClass;
 
 abstract class AbstractType extends Type
 {
+    final public static function getDefaultName(): string
+    {
+        return (new ReflectionClass(static::class))->getShortName();
+    }
+
     final public function requiresSQLCommentHint(AbstractPlatform $platform)
     {
         return true;
@@ -21,6 +26,6 @@ abstract class AbstractType extends Type
 
     final public function getName(): string
     {
-        return (new ReflectionClass($this))->getShortName();
+        return static::getDefaultName();
     }
 }
