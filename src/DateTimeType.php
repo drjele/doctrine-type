@@ -13,11 +13,13 @@ use Doctrine\DBAL\Platforms\MySqlPlatform;
 
 class DateTimeType extends \Doctrine\DBAL\Types\DateTimeType
 {
-    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform): ?string
-    {
-        $sqlDeclaration = parent::getSQLDeclaration($fieldDeclaration, $platform);
+    public function getSQLDeclaration(
+        array $column,
+        AbstractPlatform $platform
+    ): ?string {
+        $sqlDeclaration = parent::getSQLDeclaration($column, $platform);
 
-        if (($platform instanceof MySqlPlatform) && false === empty($fieldDeclaration['update'])) {
+        if (($platform instanceof MySqlPlatform) && false === empty($column['update'])) {
             return $sqlDeclaration . ' ON UPDATE CURRENT_TIMESTAMP';
         }
 

@@ -6,7 +6,7 @@ declare(strict_types=1);
  * Copyright (c) Adrian Jeledintan
  */
 
-namespace Drjele\Doctrine\Type;
+namespace Drjele\Doctrine\Type\Contract;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Platforms\MySqlPlatform;
@@ -16,12 +16,12 @@ abstract class AbstractSetType extends AbstractType
 {
     abstract public function getValues(): array;
 
-    public function convertToDatabaseValue($values, AbstractPlatform $platform): ?string
+    public function convertToDatabaseValue($value, AbstractPlatform $platform): ?string
     {
-        if (null !== $values) {
-            $values = (array)$values;
+        if (null !== $value) {
+            $value = (array)$value;
 
-            if ($diff = \array_diff($values, $this->getValues())) {
+            if ($diff = \array_diff($value, $this->getValues())) {
                 throw new InvalidTypeValueException(
                     \sprintf(
                         'invalid value `%s`, expected one of `%s`, for `%s`',
@@ -32,18 +32,18 @@ abstract class AbstractSetType extends AbstractType
                 );
             }
 
-            $values = empty($values) ? '0' : \implode(',', $values);
+            $value = empty($value) ? '0' : \implode(',', $value);
         }
 
-        return (null === $values) ? null : $values;
+        return (null === $value) ? null : $value;
     }
 
-    public function convertToPHPValue($values, AbstractPlatform $platform): ?array
+    public function convertToPHPValue($value, AbstractPlatform $platform): ?array
     {
-        return (null === $values) ? null : \explode(',', $values);
+        return (null === $value) ? null : \explode(',', $value);
     }
 
-    public function getSqlDeclaration(array $fieldDeclaration, AbstractPlatform $platform): string
+    public function getSqlDeclaration(array $column, AbstractPlatform $platform): string
     {
         $values = [];
 
@@ -55,6 +55,6 @@ abstract class AbstractSetType extends AbstractType
             return 'SET(' . \implode(',', $values) . ')';
         }
 
-        return $platform->getIntegerTypeDeclarationSQL($fieldDeclaration);
+        return $platform->getIntegerTypeDeclarationSQL($column);
     }
 }

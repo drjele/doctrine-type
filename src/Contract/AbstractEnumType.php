@@ -6,7 +6,7 @@ declare(strict_types=1);
  * Copyright (c) Adrian Jeledintan
  */
 
-namespace Drjele\Doctrine\Type;
+namespace Drjele\Doctrine\Type\Contract;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Platforms\MySqlPlatform;
@@ -18,7 +18,13 @@ abstract class AbstractEnumType extends AbstractType
 
     public function convertToDatabaseValue($value, AbstractPlatform $platform): ?string
     {
-        if (null !== $value && !\in_array($value, $this->getValues(), true)) {
+        if (null === $value) {
+            return null;
+        }
+
+        $value = (string)$value;
+
+        if (!\in_array($value, $this->getValues(), true)) {
             throw new InvalidTypeValueException(
                 \sprintf(
                     'invalid value `%s`, expected one of `%s`, for `%s`',
@@ -29,7 +35,7 @@ abstract class AbstractEnumType extends AbstractType
             );
         }
 
-        return (null === $value) ? null : (string)$value;
+        return $value;
     }
 
     public function convertToPHPValue($value, AbstractPlatform $platform): ?string
@@ -37,7 +43,7 @@ abstract class AbstractEnumType extends AbstractType
         return (null === $value) ? null : (string)$value;
     }
 
-    public function getSqlDeclaration(array $fieldDeclaration, AbstractPlatform $platform): string
+    public function getSqlDeclaration(array $column, AbstractPlatform $platform): string
     {
         $values = [];
 
@@ -49,6 +55,6 @@ abstract class AbstractEnumType extends AbstractType
             return 'ENUM(' . \implode(',', $values) . ')';
         }
 
-        return $platform->getIntegerTypeDeclarationSQL($fieldDeclaration);
+        return $platform->getIntegerTypeDeclarationSQL($column);
     }
 }
