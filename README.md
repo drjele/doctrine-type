@@ -1,19 +1,15 @@
 # Doctrine type
 
-Doctrine types.
-
 **You may fork and modify it as you wish**.
 
 Any suggestions are welcomed.
 
 ## Usage
 
-* extend **\Drjele\Doctrine\Type\AbstractEnumType** for enums
-* extend **\Drjele\Doctrine\Type\AbstractSetType** for sets
+* extend **\Drjele\Doctrine\Type\Contract\AbstractEnumType** for enums.
+* extend **\Drjele\Doctrine\Type\Contract\AbstractSetType** for sets.
 
 ### Symfony
-
-* register the class with **AcmeType::getDefaultName()**, inherited from **\Drjele\Doctrine\Type\AbstractType::getDefaultName()**
 
 ```yaml
 doctrine:
@@ -34,4 +30,4 @@ doctrine:
 
 ## Todo
 
-* Unit tests
+* Unit tests.
