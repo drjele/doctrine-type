@@ -21,7 +21,7 @@ abstract class AbstractSetType extends AbstractType
         if (null !== $value) {
             $value = (array)$value;
 
-            if ($diff = \array_diff($value, $this->getValues())) {
+            if (false === empty($diff = \array_diff($value, $this->getValues()))) {
                 throw new InvalidTypeValueException(
                     \sprintf(
                         'invalid value `%s`, expected one of `%s`, for `%s`',
@@ -32,7 +32,7 @@ abstract class AbstractSetType extends AbstractType
                 );
             }
 
-            $value = empty($value) ? '0' : \implode(',', $value);
+            $value = true === empty($value) ? '0' : \implode(',', $value);
         }
 
         return (null === $value) ? null : $value;
