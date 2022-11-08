@@ -16,7 +16,7 @@ abstract class AbstractEnumType extends AbstractType
 {
     abstract public function getValues(): array;
 
-    public function convertToDatabaseValue($value, AbstractPlatform $platform): ?string
+    public function convertToDatabaseValue(mixed $value, AbstractPlatform $platform): ?string
     {
         if (null === $value) {
             return null;
@@ -38,7 +38,7 @@ abstract class AbstractEnumType extends AbstractType
         return $value;
     }
 
-    public function convertToPHPValue($value, AbstractPlatform $platform): ?string
+    public function convertToPHPValue(mixed $value, AbstractPlatform $platform): ?string
     {
         return (null === $value) ? null : (string)$value;
     }

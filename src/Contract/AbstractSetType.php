@@ -16,7 +16,7 @@ abstract class AbstractSetType extends AbstractType
 {
     abstract public function getValues(): array;
 
-    public function convertToDatabaseValue($value, AbstractPlatform $platform): ?string
+    public function convertToDatabaseValue(mixed $value, AbstractPlatform $platform): ?string
     {
         if (null !== $value) {
             $value = (array)$value;
@@ -32,15 +32,15 @@ abstract class AbstractSetType extends AbstractType
                 );
             }
 
-            $value = true === empty($value) ? '0' : \implode(',', $value);
+            $value = true === empty($value) ? null : \implode(',', $value);
         }
 
         return (null === $value) ? null : $value;
     }
 
-    public function convertToPHPValue($value, AbstractPlatform $platform): ?array
+    public function convertToPHPValue(mixed $value, AbstractPlatform $platform): ?array
     {
-        return (null === $value) ? null : \explode(',', $value);
+        return true === empty($value) ? null : \explode(',', $value);
     }
 
     public function getSqlDeclaration(array $column, AbstractPlatform $platform): string
