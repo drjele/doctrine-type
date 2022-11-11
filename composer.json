@@ -19,9 +19,9 @@
         "doctrine/dbal": "^2.0|^3.0"
     },
     "require-dev": {
-        "drjele/symfony-phpunit": "^3.0",
-        "friendsofphp/php-cs-fixer": "^3.3",
-        "squizlabs/php_codesniffer": "^3.6"
+        "drjele/symfony-phpunit": "^4.0",
+        "friendsofphp/php-cs-fixer": "^3.13",
+        "squizlabs/php_codesniffer": "^3.7"
     },
     "autoload": {
         "psr-4": {
