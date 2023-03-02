@@ -36,16 +36,9 @@ doctrine:
 
 ```shell
 git clone git@gitlab.com:drjele-doctrine/type.git
-cd type/scripts/docker/
+cd type
 
-# the next instructions allow to run git from inside the container
-cp ~/.ssh/id_* ./
-NAME="your-name" &&
-    EMAIL="your-email" &&
-    CONFIG=('#!/bin/bash' 'if command -v git &> /dev/null; then' "    git config --global user.name \"${NAME}\"" "    git config --global user.email \"${EMAIL}\"" 'fi') && printf '%s\n' "${CONFIG[@]}" >> ./.profile_local
+rm -rf .git/hooks && ln -s ../dev/git-hooks .git/hooks
 
-docker-compose build && docker-compose up -d
-docker-compose exec php sh
-composer install
-
+./dc build && ./dc up -d
 ```
