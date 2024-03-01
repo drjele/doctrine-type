@@ -482,29 +482,29 @@
         },
         {
             "name": "drjele/symfony-phpunit",
-            "version": "v5.1.0",
+            "version": "v5.2.0",
             "source": {
                 "type": "git",
-                "url": "git@gitlab.com:drjele-symfony/phpunit.git",
-                "reference": "cd547d07777036270c79978bf189daf1aa78c20e"
+                "url": "https://gitlab.com/drjele-symfony/phpunit.git",
+                "reference": "c52550c5295ccae7f23563ac2336ea06033d9a55"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/drjele-symfony%2Fphpunit/repository/archive.zip?sha=cd547d07777036270c79978bf189daf1aa78c20e",
-                "reference": "cd547d07777036270c79978bf189daf1aa78c20e",
+                "url": "https://gitlab.com/api/v4/projects/drjele-symfony%2Fphpunit/repository/archive.zip?sha=c52550c5295ccae7f23563ac2336ea06033d9a55",
+                "reference": "c52550c5295ccae7f23563ac2336ea06033d9a55",
                 "shasum": ""
             },
             "require": {
-                "mockery/mockery": "^1.6",
+                "mockery/mockery": "1.*",
                 "php": ">=8.2",
                 "symfony/phpunit-bridge": "^4.0|^5.0|^6.0|^7.0"
             },
             "require-dev": {
-                "doctrine/doctrine-bundle": "^2.11",
-                "doctrine/orm": "^2.17",
-                "friendsofphp/php-cs-fixer": "^3.42",
-                "phpstan/phpstan": "^1.10",
-                "squizlabs/php_codesniffer": "^3.8",
+                "doctrine/doctrine-bundle": "2.*",
+                "doctrine/orm": "2.*|3.*|4.*",
+                "friendsofphp/php-cs-fixer": "3.*",
+                "phpstan/phpstan": "1.*",
+                "squizlabs/php_codesniffer": "3.*",
                 "symfony/framework-bundle": "^4.0|^5.0|^6.0|^7.0"
             },
             "type": "library",
@@ -530,7 +530,11 @@
                 "phpunit",
                 "symfony"
             ],
-            "time": "2023-12-27T14:00:53+00:00"
+            "support": {
+                "issues": "https://gitlab.com/drjele-symfony/phpunit/-/issues",
+                "source": "https://gitlab.com/drjele-symfony/phpunit/-/tree/v5.2.0"
+            },
+            "time": "2024-03-01T10:29:23+00:00"
         },
         {
             "name": "friendsofphp/php-cs-fixer",
