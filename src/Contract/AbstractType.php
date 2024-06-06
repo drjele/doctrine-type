@@ -18,9 +18,4 @@ abstract class AbstractType extends Type
     {
         return (new ReflectionClass(static::class))->getShortName();
     }
-
-    public function requiresSQLCommentHint(AbstractPlatform $platform): bool
-    {
-        return true;
-    }
 }
