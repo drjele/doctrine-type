@@ -1,6 +1,7 @@
 {
     "name": "drjele/doctrine-type",
     "type": "library",
+    "version": "v4.2.4",
     "description": "Doctrine type",
     "keywords": [
         "doctrine",
@@ -16,7 +17,7 @@
     ],
     "require": {
         "php": ">=8.2",
-        "doctrine/dbal": "2.*|3.*|4.*"
+        "doctrine/dbal": "2.*|3.*"
     },
     "require-dev": {
         "drjele/symfony-phpunit": "5.*",
