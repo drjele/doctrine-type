@@ -8,7 +8,6 @@ declare(strict_types=1);
 
 namespace Drjele\Doctrine\Type\Contract;
 
-use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
 use ReflectionClass;
 
