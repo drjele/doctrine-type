@@ -1,5 +1,7 @@
 # Doctrine type
 
+**NO LONGER MAINTAINED, MOVED TO https://gitlab.com/precision-soft-open-source/doctrine/type**
+
 **You may fork and modify it as you wish**.
 
 Any suggestions are welcomed.
